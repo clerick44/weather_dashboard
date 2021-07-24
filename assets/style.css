@@ -1,0 +1,88 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  --searchBackgroundColor: rgba(40, 70, 75, 1);
+  --bodyBackgroundColor: rgba(147, 22, 33, 1);
+  --cardBackgroundColor: rgba();
+}
+
+body {
+  background-color: var(--bodyBackgroundColor);
+}
+
+#card {
+  border: 3px solid black;
+  width: 550px;
+  height: 700px;
+  margin: 150px auto 0 auto;
+  background-color: white;
+  border-radius: 15px;
+  /* overflow: hidden; */
+  box-shadow: 0px 10px 20px black;
+}
+
+#searchArea {
+  padding: 5px;
+  width: 100%;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  height: 60px;
+  border-radius: 10px 10px 0 0;
+  /* margin: 300px auto 0px auto; */
+  background-color: var(--searchBackgroundColor);
+}
+
+#searchBox {
+  height: 35px;
+  width: 150px;
+}
+
+#searchButton {
+  height: 35px;
+  display: grid;
+  place-items: center;
+}
+
+#cardHeader {
+  height: 10%;
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  position: relative;
+}
+
+#currentIcon {
+  position: absolute;
+  height: 100px;
+  width: 100px;
+  left: center;
+  top: -50px;
+  border: 2px solid red;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  background-color: white;
+}
+
+#location {
+  width: 50%;
+  text-align: center;
+}
+
+#currentDate {
+  width: 50%;
+  text-align: center;
+}
+
+/* #currentConditionsContainer {
+  height: 75%;
+  background-color: wheat;
+}
+
+.row {
+  border: 1px solid green;
+  height: 33%;
+  align-content: center;
+} */
