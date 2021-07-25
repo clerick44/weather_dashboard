@@ -5,6 +5,7 @@
   --searchBackgroundColor: rgba(40, 70, 75, 1);
   --bodyBackgroundColor: rgba(147, 22, 33, 1);
   --cardBackgroundColor: rgba();
+  font-weight: 600;
 }
 
 body {
@@ -18,7 +19,7 @@ body {
   margin: 150px auto 0 auto;
   background-color: white;
   border-radius: 15px;
-  /* overflow: hidden; */
+  overflow: hidden;
   box-shadow: 0px 10px 20px black;
 }
 
@@ -59,11 +60,16 @@ body {
   width: 100px;
   left: center;
   top: -50px;
-  border: 2px solid red;
+  border: 2px solid black;
   border-radius: 50%;
   display: grid;
   place-items: center;
   background-color: white;
+}
+
+img {
+  max-width: 100%;
+  max-height: 100%;
 }
 
 #location {
@@ -76,13 +82,31 @@ body {
   text-align: center;
 }
 
-/* #currentConditionsContainer {
-  height: 75%;
-  background-color: wheat;
+#currentConditionsContainer {
+  /* background-color: wheat; */
+  height: 20%;
 }
 
-.row {
-  border: 1px solid green;
-  height: 33%;
-  align-content: center;
-} */
+#currentTemp {
+  font-size: 64px;
+}
+
+.box {
+  font-size: 16px;
+  padding: 5px;
+}
+
+.currentLabel {
+  font-size: 8px;
+}
+
+#forecastContainer {
+  margin-top: 35px;
+  /* margin: 0; */
+  justify-content: space-around;
+  margin: 35px 5px 5px 5px;
+}
+
+.forecast {
+  border: 1px solid gray;
+}

@@ -54,26 +54,79 @@
         </button>
       </div>
       <div id="cardHeader">
-        <div id="location">minneapolis</div>
-        <div id="currentIcon">:D</div>
+        <div id="location"></div>
+        <div id="currentIcon"></div>
         <div id="currentDate">Friday 7/23</div>
       </div>
 
-      <div id="currentConditionsContainer" class="container h-75">
-        <div class="row h-50">
-          <div id="currentTemp" class="col text-center">75</div>
-        </div>
+      <div id="currentConditionsContainer" class="container">
 
-        <div class="row h-25">
-          <div id="currentHighLow" class="col text-center box">97 / 72</div>
-          <div id="currentHumidity" class="col text-center box">35%</div>
-        </div>
+        <div id="currentConditions" class="row h-100">
 
-        <div class="row h-25">
-          <div id="currentWind" class="col text-center box">SE 3 mph</div>
-          <div id="currentUvIndex" class="col text-center box">42</div>
+          <div id="currentTempContainer" class="col-5 h-100">
+            <div class="row h-100">
+              <div id="currentTemp" class="col-12 text-center">--</div>
+              <div id="currentTempLabel" class="col-12 text-center currentLabel">Current Temp</div>
+            </div>
+          </div>
+
+          <div id="CurrentStatsContainer" class="col-7 h-100">
+            <div class="row h-50">
+              <div id="highLowContainer" class="col text-center box">
+                <div id="currentHighLow" class="col text-center box"><span id="high">--</span> / <span id="low">--</span></div>
+                <div id="highLowLabels" class="col text-center box currentLabel"><span id="highLabel" class="hiLow">High</span> / <span id="lowLabel" class="hiLow">Low</span></div>     
+              </div>
+              <div id="currentHumidityContainer" class="col text-center box">
+                <div id="currentHumidity" class="col text-center box">--</div>
+                <div id="currenthumidityLabel" class="col text-center currentLabel">Current Humidity</div>
+              </div>
+            </div>
+
+            <div class="row h-50">
+              <div class="col text-center box">
+               <div id="currentWind" class="col text-center box">-- mph</div>
+                <div id="currentWindLabel" class="col text-center currentLabel">Current Wind</div>
+              </div>
+              <div class="col text-center box">
+                <div id="currentUvIndex" class="col text-center box">--</div>
+                <div id="currentUvLabel" class="col text-center currentLabel">Current UV Index</div>
+              </div>
+            </div>
+          </div>
+
         </div>
       </div>
+
+      <div id="forecastContainer" class="row">
+        <div class="col text-center forecast">
+          <div class="col icon">1</div>
+          <div class="col highlow">2</div>
+          <div class="col highLowLabel">3</div>
+        </div>
+        <div class="col text-center forecast">
+          <div class="col icon">1</div>
+          <div class="col highlow">2</div>
+          <div class="col highLowLabel">3</div>
+        </div>
+        <div class="col text-center forecast">
+          <div class="col icon">1</div>
+          <div class="col highlow">2</div>
+          <div class="col highLowLabel">3</div>
+        </div>
+        <div class="col text-center forecast">
+          <div class="col icon">1</div>
+          <div class="col highlow">2</div>
+          <div class="col highLowLabel">3</div>
+        </div>
+        <div class="col text-center forecast">
+          <div class="col icon">1</div>
+          <div class="col highlow">2</div>
+          <div class="col highLowLabel">3</div>
+        </div>
+      </div>
+
+      
+
     </div>
   </body>
 </html>
