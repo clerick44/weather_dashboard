@@ -9,22 +9,36 @@
 }
 
 body {
-  background-color: var(--bodyBackgroundColor);
+  min-height: 100vh;
+
+  /* background-color: var(--bodyBackgroundColor); */
+  /* background: orange; */
+  background: linear-gradient(
+    to left bottom,
+    rgba(255, 165, 87, 1),
+    rgba(255, 165, 0, 0.7)
+  );
+  /* background-repeat: no-repeat; */
 }
 
 #card {
-  border: 3px solid black;
+  /* border: 3px solid black; */
   width: 550px;
   height: 450px;
   margin: 150px auto 0 auto;
-  background-color: white;
+  background: white;
+  background: linear-gradient(
+    to right top,
+    rgba(255, 255, 255, 0.7),
+    rgba(255, 255, 255, 0.2)
+  );
   border-radius: 15px;
   overflow: hidden;
-  box-shadow: 0px 10px 20px black;
+  box-shadow: 0 0 15px BLACK;
 }
 
 #searchArea {
-  padding: 5px;
+  padding: 5px 10px 5px 10px;
   width: 100%;
   display: flex;
   justify-content: flex-start;
@@ -55,7 +69,7 @@ body {
   display: flex;
   flex-wrap: wrap;
   justify-content: space-evenly;
-  margin-left: 125px;
+  margin-left: 115px;
 
   align-items: center;
 }
@@ -65,7 +79,6 @@ body {
   padding: 0 5px 2px 5px;
   height: 40%;
   font-size: 12px;
-  /* margin: 2px 1px; */
 }
 
 .historyButton:hover {
@@ -115,14 +128,46 @@ img {
   height: 35%;
 }
 
+#currentTempContainer {
+  border-radius: 10px;
+  background: white;
+  background: linear-gradient(
+    to right top,
+    rgba(255, 255, 255, 0.7),
+    rgba(255, 255, 255, 0.2)
+  );
+}
+
 #currentTemp {
   font-size: 64px;
+  padding-top: 20px;
+}
+
+#currentUvIndex {
+  /* width: fit-content; */
+  border-radius: 5px;
 }
 
 .box {
-  font-size: 16px;
+  font-size: 20px;
   padding: 5px;
+  margin: 3px;
   border-radius: 10px;
+  background: white;
+  background: linear-gradient(
+    to right top,
+    rgba(255, 255, 255, 0.7),
+    rgba(255, 255, 255, 0.2)
+  );
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.flexContainer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .currentLabel {
@@ -149,9 +194,6 @@ img {
   padding: 0;
 }
 
-/* .icon {
-  padding: 0;
-} */
 .forecastHighLowEl {
   font-size: 10px;
   padding: 0;
