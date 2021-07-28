@@ -1,40 +1,46 @@
+// sets constant for displaying Ferenhaight and degree symbol
 const degF = "&#8457";
 
+//resets variable before local data is imported
 var searchHistory = [];
 
 $(document).ready(function () {
   loadHistory();
   populateHistory();
 
+  //hides forcast containers and displays current date
   $(".forecast").hide();
   $("#currentDate").html(moment().format("ddd, MMM Do"));
 
+  //calls fetchweather function when clicked
   $("#searchButton").click(function () {
     fetchWeather(searchBox.value);
   });
 
+  //gets data from openweather API
   function fetchWeather(event) {
-    console.log(event);
-    // console.log(data);
     var lat;
     var lon;
-    // var locationVal = searchBox.value;
+
+    //sets variable to search string from whichever button was clicked
     var locationVal = event;
-    // updateHistory(locationVal);
+    //displays history
     populateHistory();
 
+    //builds first fetch url using locationVal
     var firstFetchUrl =
       "https://api.openweathermap.org/data/2.5/weather?q=" +
       locationVal +
       "&units=imperial&appid=04540eb612d1334a8fb06879d6710e36";
-    var secondFetchUrl =
-      "https://api.openweathermap.org/data/2.5/onecall?lat=" +
-      lat +
-      "&lon=" +
-      lon +
-      "&exclude=minutely,hourly,alerts&appid=04540eb612d1334a8fb06879d6710e36";
-
+    // var secondFetchUrl =
+    //   "https://api.openweathermap.org/data/2.5/onecall?lat=" +
+    //   lat +
+    //   "&lon=" +
+    //   lon +
+    //   "&exclude=minutely,hourly,alerts&appid=04540eb612d1334a8fb06879d6710e36";
+    //calls first fetch
     fetch(firstFetchUrl)
+      //checks for good fetch, displays message if not
       .then((response) => {
         if (!response.ok) {
           alert("Something has gone wrong. Error " + response.status);
@@ -42,9 +48,13 @@ $(document).ready(function () {
         }
         return response.json();
       })
+
       .then((data) => {
+        //displays location on page
         $("#location").html(data.name);
+        //stores location to local storage
         updateHistory(data.name);
+        //grabs lat and lon values for searched location to be used in second fetch
         lat = data.coord.lat;
         lon = data.coord.lon;
 
@@ -54,7 +64,7 @@ $(document).ready(function () {
           "&lon=" +
           lon +
           "&exclude=minutely,hourly,alerts&appid=04540eb612d1334a8fb06879d6710e36";
-
+        //calls second fetch and checks for errors
         fetch(secondFetchUrl)
           .then((response) => {
             if (!response.ok) {
@@ -63,6 +73,7 @@ $(document).ready(function () {
             }
             return response.json();
           })
+          //calls functions to populate app
           .then((data) => {
             displayCurrentWeather(data);
             displayForecast(data);
@@ -75,11 +86,11 @@ $(document).ready(function () {
         console.error(error);
       });
 
-    // .catch(data) {
     return;
   }
-
+  //populates current weather data
   function displayCurrentWeather(data) {
+    //removes any existing icons before displaying new one
     $("#currentConditionsIcon").remove();
     $("#currentIcon").append(
       $("<img>", {
@@ -90,6 +101,7 @@ $(document).ready(function () {
           "@2x.png",
       })
     );
+    //displays current and high/low temps after converting from degress kelvin and wind, UV index and humidity
     $("#currentTemp").html(
       Math.floor(((data.current.temp - 273) * 9) / 5 + 32) + degF
     );
@@ -104,7 +116,7 @@ $(document).ready(function () {
     );
     $("#currentUvIndex").html(Math.floor(data.current.uvi));
     var uvi = Math.floor(data.current.uvi);
-
+    //cchanges background color of UV index based on severity
     if (uvi < 3) {
       $("#currentUvIndex").css("background-color", "green");
     } else if (uvi >= 3 && uvi < 6) {
@@ -118,30 +130,33 @@ $(document).ready(function () {
     }
     return;
   }
-
+  //displays 5 day forecast
   function displayForecast(data) {
+    //collects all children into forecast variable
     var forecast = $("#forecastContainer").children();
-
+    //clears any existing data from previous search and makes visable
     $(".forecastDateEl").remove();
     $(".forecastIconEl").remove();
     $(".forecastHighLowEl").remove();
     $(".forecast").show();
-
+    //runs function on all forecast children
     forecast.each(function (i, val) {
+      //alligns index of children with forecast data from second fetch
       var offset = i + 1;
-
+      //defines locations for data to be displayed
       var dateDiv = $(this).children(":nth-child(1)");
       var iconDiv = $(this).children(":nth-child(2)");
       var highLowDiv = $(this).children(":nth-child(3)");
-
+      //changes unix date code from second fetch into day and date
       var forecastDate = moment
         .unix(data.daily[offset].dt)
         .format("ddd, MMM Do");
+      //converts temps from kelvin to ferenheit
       var highTemp =
         Math.floor(((data.daily[offset].temp.max - 273) * 9) / 5 + 32) + degF;
       var lowTemp =
         Math.floor(((data.daily[offset].temp.min - 273) * 9) / 5 + 32) + degF;
-
+      //displays data in forecast div
       $(dateDiv).append(
         "<span class='forecastDateEl'>" + forecastDate + "</span>"
       );
@@ -167,7 +182,7 @@ $(document).ready(function () {
       );
     });
   }
-
+  //gets stored search history and places it in searchHistory variable defined at top
   function loadHistory() {
     var storedSearchHistory = JSON.parse(
       localStorage.getItem("weatherSearchHistory")
@@ -178,6 +193,7 @@ $(document).ready(function () {
     return;
   }
 
+  //updates search history, limits it to only last 6 searches and stores locally
   function updateHistory(val) {
     if (searchHistory.length > 5) {
       searchHistory.shift();
@@ -192,6 +208,7 @@ $(document).ready(function () {
     return;
   }
 
+  //displays saearch history
   function populateHistory() {
     $(".historyButton").remove();
 

@@ -70,12 +70,11 @@ body {
   flex-wrap: wrap;
   justify-content: space-evenly;
   margin-left: 115px;
-
   align-items: center;
 }
 
 .historyButton {
-  color: white;
+  color: rgba(255, 255, 255, 1);
   padding: 0 5px 2px 5px;
   height: 40%;
   font-size: 12px;
@@ -83,7 +82,8 @@ body {
 
 .historyButton:hover {
   cursor: pointer;
-  font-size: 13px;
+  /* color: rgba(255, 255, 255, 1); */
+  color: orange;
 }
 
 #cardHeader {
@@ -144,7 +144,6 @@ img {
 }
 
 #currentUvIndex {
-  /* width: fit-content; */
   border-radius: 5px;
 }
 
@@ -175,7 +174,6 @@ img {
 }
 
 #forecastContainer {
-  /* margin: 0; */
   justify-content: space-around;
   margin: 10px 5px 5px 5px;
 }
@@ -200,7 +198,6 @@ img {
 }
 .highLow {
   padding: 0;
-  /* font-size: 10px; */
 }
 .highLowLabel {
   padding: 0;
